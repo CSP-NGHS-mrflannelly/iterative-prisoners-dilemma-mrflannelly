@@ -3,7 +3,7 @@ Section 0 - Line up
 --------------------------------------------------------------------------------
 Player 0 (P0): E0, Collude
         Always collude.
-Player 1 (P1): Mr. Flannelly, Betray
+Player 1 (P1): E0, Betray
         Always betray.
 Player 2 (P2): E2, Alternate
         Collude, then alternate.
@@ -16,19 +16,19 @@ Section 1 - Player vs. Player
 --------------------------------------------------------------------------------
 Each column shows pts/round earned against each other player:
              P0     P1     P2     P3
-vs. P0 :      0    100     49   -248
-vs. P1 :   -500      0   -375   -252
-vs. P2 :   -248    -75      0    -75
-vs. P3 :   -252   -248   -373      0
-TOTAL  :  -1000   -223   -699   -575
+vs. P0 :      0    100     49     49
+vs. P1 :   -500      0   -375   -250
+vs. P2 :   -248    -75      0   -136
+vs. P3 :   -249   -250   -288      0
+TOTAL  :   -997   -225   -614   -337
 --------------------------------------------------------------------------------
 Section 2 - Leaderboard
 --------------------------------------------------------------------------------
 Average points per round:
 Team name (P#):  Score      with strategy name
-Mr. Flanne(P1):        -56 points with Betray                                  
-Mr. F     (P3):       -144 points with Randomness unless you backstab          
-E2        (P2):       -175 points with Alternate                               
+E0        (P1):        -57 points with Betray                                  
+Mr. F     (P3):        -85 points with Randomness unless you backstab          
+E2        (P2):       -154 points with Alternate                               
 E0        (P0):       -250 points with Collude                                 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ example1------------------------------------------------------------------------
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'Mr. Flannelly'
+team_name = 'E0'
 strategy_name = 'Betray'
 strategy_description = 'Always betray.'
     
@@ -149,8 +149,7 @@ def move(my_history, their_history, my_score, their_score):
     elif their_history[-1] == 'b':
         return 'b'
     else:
-        return 
-    return random.choice('c','b')
+        return random.choice(['c','b'])
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
@@ -193,15 +192,12 @@ if __name__ == '__main__':
 Section 3 - Game Data for Team E0
 --------------------------------------------------------------------------------
 -500 pt/round: E0(P0) "Collude"
-100 pt/round: Mr. Flannelly(P1) "Betray"
+100 pt/round: E0(P1) "Betray"
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 
-cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-
-ccccccccccc
-BBBBBBBBBBB
+cccccccccccccccccccccccccccccccccccc
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 
 --------------------------------------------------------------------------------
 -248 pt/round: E0(P0) "Collude"
@@ -209,53 +205,53 @@ BBBBBBBBBBB
 CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc
 CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB
 
-CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcC
-CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBC
+CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcC
+CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBC
 
 --------------------------------------------------------------------------------
--252 pt/round: E0(P0) "Collude"
--248 pt/round: Mr. F(P3) "Randomness unless you backstab"
-cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-B                                                                               
+-249 pt/round: E0(P0) "Collude"
+49 pt/round: Mr. F(P3) "Randomness unless you backstab"
+CccCcCCCcCccCCcCCcCcCCCcCCcCCccCcCcCCCCcCcccCccCCCCCcCcCccCCcCccCcCCcccCCCcCCCCC
+CBBCBCCCBCBBCCBCCBCBCCCBCCBCCBBCBCBCCCCBCBBBCBBCCCCCBCBCBBCCBCBBCBCCBBBCCCBCCCCC
 
-ccccccccccccccccccccccccccccccccccccccccccccccccccc
-                                                   
+cCcccCCcccCCCCcCcCCCCCCCcCccCCCccCcccCccCcccccCCcccCccccccCccCccCcCccccccCCCccCC
+BCBBBCCBBBCCCCBCBCCCCCCCBCBBCCCBBCBBBCBBCBBBBBCCBBBCBBBBBBCBBCBBCBCBBBBBBCCCBBCC
+
+CcccCccCcCCCCCccCcCcCcCcc
+CBBBCBBCBCCCCCBBCBCBCBCBB
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-Section 3 - Game Data for Team Mr. Flannelly
+Section 3 - Game Data for Team E0
 --------------------------------------------------------------------------------
-100 pt/round: Mr. Flannelly(P1) "Betray"
+100 pt/round: E0(P1) "Betray"
 -500 pt/round: E0(P0) "Collude"
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-
-BBBBBBBBBBB
-ccccccccccc
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+cccccccccccccccccccccccccccccccccccc
 
 --------------------------------------------------------------------------------
--75 pt/round: Mr. Flannelly(P1) "Betray"
+-75 pt/round: E0(P1) "Betray"
 -375 pt/round: E2(P2) "Alternate"
 BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
 cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
 
-BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
-cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
+BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
+cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
 
 --------------------------------------------------------------------------------
--248 pt/round: Mr. Flannelly(P1) "Betray"
--252 pt/round: Mr. F(P3) "Randomness unless you backstab"
-Bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-cbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+-250 pt/round: E0(P1) "Betray"
+-250 pt/round: Mr. F(P3) "Randomness unless you backstab"
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 
-bbbbbbbbb
-bbbbbbbbb
+bb
+bb
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -266,64 +262,67 @@ Section 3 - Game Data for Team E2
 CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB
 CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc
 
-CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBC
-CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcC
+CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBC
+CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcC
 
 --------------------------------------------------------------------------------
 -375 pt/round: E2(P2) "Alternate"
--75 pt/round: Mr. Flannelly(P1) "Betray"
+-75 pt/round: E0(P1) "Betray"
 cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
 BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
 
-cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
-BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
+cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
+BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
 
 --------------------------------------------------------------------------------
--373 pt/round: E2(P2) "Alternate"
--75 pt/round: Mr. F(P3) "Randomness unless you backstab"
-Cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
-C B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B 
+-288 pt/round: E2(P2) "Alternate"
+-136 pt/round: Mr. F(P3) "Randomness unless you backstab"
+CbcbcbcBcBcBcbcbcBcBcBcbcbcbcbcBcBcBcBcbcbcbcbcBcBcBcbcBcBcbcbcbcBcbcBcBcbcbcBcB
+CbBbBbBcBcBcBbBbBcBcBcBbBbBbBbBcBcBcBcBbBbBbBbBcBcBcBbBcBcBbBbBbBcBbBcBcBbBbBcBc
 
-cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
-B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B 
+cbcbcBcBcbcbcbcBcbcbcbcBcBcBcbcbcBcBcbcbcbcBcbcBcBcbcBcbcBcbcbcbcBcBcbcbcbcBcbcB
+BbBbBcBcBbBbBbBcBbBbBbBcBcBcBbBbBcBcBbBbBbBcBbBcBcBbBcBbBcBbBbBbBcBcBbBbBbBcBbBc
 
-cbcbcbcbcbcbcbcbcbc
-B B B B B B B B B B
+cBcBcbcbcBcBcB
+BcBcBbBbBcBcBc
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 Section 3 - Game Data for Team Mr. F
 --------------------------------------------------------------------------------
--248 pt/round: Mr. F(P3) "Randomness unless you backstab"
--252 pt/round: E0(P0) "Collude"
-B                                                                               
-cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+49 pt/round: Mr. F(P3) "Randomness unless you backstab"
+-249 pt/round: E0(P0) "Collude"
+CBBCBCCCBCBBCCBCCBCBCCCBCCBCCBBCBCBCCCCBCBBBCBBCCCCCBCBCBBCCBCBBCBCCBBBCCCBCCCCC
+CccCcCCCcCccCCcCCcCcCCCcCCcCCccCcCcCCCCcCcccCccCCCCCcCcCccCCcCccCcCCcccCCCcCCCCC
 
-                                                   
-ccccccccccccccccccccccccccccccccccccccccccccccccccc
+BCBBBCCBBBCCCCBCBCCCCCCCBCBBCCCBBCBBBCBBCBBBBBCCBBBCBBBBBBCBBCBBCBCBBBBBBCCCBBCC
+cCcccCCcccCCCCcCcCCCCCCCcCccCCCccCcccCccCcccccCCcccCccccccCccCccCcCccccccCCCccCC
+
+CBBBCBBCBCCCCCBBCBCBCBCBB
+CcccCccCcCCCCCccCcCcCcCcc
 
 --------------------------------------------------------------------------------
--252 pt/round: Mr. F(P3) "Randomness unless you backstab"
--248 pt/round: Mr. Flannelly(P1) "Betray"
-cbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-Bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+-250 pt/round: Mr. F(P3) "Randomness unless you backstab"
+-250 pt/round: E0(P1) "Betray"
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 
-bbbbbbbbb
-bbbbbbbbb
+bb
+bb
 
 --------------------------------------------------------------------------------
--75 pt/round: Mr. F(P3) "Randomness unless you backstab"
--373 pt/round: E2(P2) "Alternate"
-C B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B 
-Cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
+-136 pt/round: Mr. F(P3) "Randomness unless you backstab"
+-288 pt/round: E2(P2) "Alternate"
+CbBbBbBcBcBcBbBbBcBcBcBbBbBbBbBcBcBcBcBbBbBbBbBcBcBcBbBcBcBbBbBbBcBbBcBcBbBbBcBc
+CbcbcbcBcBcBcbcbcBcBcBcbcbcbcbcBcBcBcBcbcbcbcbcBcBcBcbcBcBcbcbcbcBcbcBcBcbcbcBcB
 
-B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B 
-cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
+BbBbBcBcBbBbBbBcBbBbBbBcBcBcBbBbBcBcBbBbBbBcBbBcBcBbBcBbBcBbBbBbBcBcBbBbBbBcBbBc
+cbcbcBcBcbcbcbcBcbcbcbcBcBcBcbcbcBcBcbcbcbcBcbcBcBcbcBcbcBcbcbcbcBcBcbcbcbcBcbcB
 
-B B B B B B B B B B
-cbcbcbcbcbcbcbcbcbc
+BcBcBbBbBcBcBc
+cBcBcbcbcBcBcB
 
 --------------------------------------------------------------------------------
