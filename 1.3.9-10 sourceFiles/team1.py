@@ -22,11 +22,39 @@ def move(my_history, their_history, my_score, their_score):
             return'b'
         else:
             return'c'
-    else:
-        if a == 'bcbc' or a == 'cbcb':
+    elif a == 'bcbc' or a == 'cbcb':
             return'b'
-        elif a == 'bbbb' or a == 'cccc':
+    elif a == 'bbbb' or a == 'cccc':
+        return'b'
+    elif a == 'bccb' or a == 'cbbc' or a == 'ccbb' or a == 'bbcc':
+        if their_history[-2:-1] == 'bb':
+            return'c'
+        elif their_history[-2:-1] == 'cc':
             return'b'
+        elif their_history[-2:-1] == 'bc':
+            return'b'
+        elif their_history[-2:-1] == 'cb':
+            return'b'
+    elif a == 'bccc' or a == 'cbcc' or a == 'ccbc' or a == 'cccb':
+        if their_history[-3:-1] == 'bcc':
+            return'c'
+        elif their_history[-3:-1] == 'ccc':
+            return'b'
+        elif their_history[-3:-1] == 'cbc':
+            return'b'
+        elif their_history[-3:-1] == 'ccb':
+            return'c'
+    elif a == 'cbbb' or a == 'bcbb' or a == 'bbcb' or a == 'bbbc':
+        if their_history[-3:-1] == 'bcc':
+            return'c'
+        elif their_history[-3:-1] == 'ccc':
+            return'b'
+        elif their_history[-3:-1] == 'cbc':
+            return'b'
+        elif their_history[-3:-1] == 'ccb':
+            return'c'
+        
+    
             
         
         
