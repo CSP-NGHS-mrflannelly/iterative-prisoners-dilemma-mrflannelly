@@ -1,0 +1,360 @@
+--------------------------------------------------------------------------------
+Section 0 - Line up
+--------------------------------------------------------------------------------
+Player 0 (P0): E0, Collude
+        Always collude.
+Player 1 (P1): E1, Betray
+        Always betray.
+Player 2 (P2): E2, Alternate
+        Collude, then alternate.
+Player 3 (P3): RobandReiswillRek, Stradegy Reader
+        the other team will do things based on our previous performance so be un
+        predictable in our random pattern basing off what they choose. The first
+         4 will be every other. Next we will read their first things to find out
+         their algorithm and go accordingly.
+--------------------------------------------------------------------------------
+Section 1 - Player vs. Player
+--------------------------------------------------------------------------------
+Each column shows pts/round earned against each other player:
+             P0     P1     P2     P3
+vs. P0 :      0    100     49     98
+vs. P1 :   -500      0   -376   -253
+vs. P2 :   -249    -75      0    -78
+vs. P3 :   -495   -246   -370      0
+TOTAL  :  -1244   -221   -697   -233
+--------------------------------------------------------------------------------
+Section 2 - Leaderboard
+--------------------------------------------------------------------------------
+Average points per round:
+Team name (P#):  Score      with strategy name
+E1        (P1):        -56 points with Betray                                  
+RobandReis(P3):        -59 points with Stradegy Reader                         
+E2        (P2):       -175 points with Alternate                               
+E0        (P0):       -311 points with Collude                                 
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+example0--------------------------------------------------------------------------------
+####
+# Each team's file must define four tokens:
+#     team_name: a string
+#     strategy_name: a string
+#     strategy_description: a string
+#     move: A function that returns 'c' or 'b'
+####
+
+team_name = 'E0'
+strategy_name = 'Collude'
+strategy_description = 'Always collude.'
+    
+def move(my_history, their_history, my_score, their_score):
+    '''Make my move based on the history with this player.
+    
+    history: a string with one letter (c or b) per round that has been played with this opponent.
+    their_history: a string of the same length as history, possibly empty. 
+    The first round between these two players is my_history[0] and their_history[0]
+    The most recent round is my_history[-1] and their_history[-1]
+    
+    Returns 'c' or 'b' for collude or betray.
+    '''
+    
+    # This player always colludes.
+    return 'c'
+    --------------------------------------------------------------------------------
+example1--------------------------------------------------------------------------------
+####
+# Each team's file must define four tokens:
+#     team_name: a string
+#     strategy_name: a string
+#     strategy_description: a string
+#     move: A function that returns 'c' or 'b'
+####
+
+team_name = 'E1'
+strategy_name = 'Betray'
+strategy_description = 'Always betray.'
+    
+def move(my_history, their_history, my_score, their_score):
+    '''Make my move based on the history with this player.
+    
+    history: a string with one letter (c or b) per round that has been played with this opponent.
+    their_history: a string of the same length as history, possibly empty. 
+    The first round between these two players is my_history[0] and their_history[0]
+    The most recent round is my_history[-1] and their_history[-1]
+    
+    Returns 'c' or 'b' for collude or betray.
+    '''
+    
+    #This example player always betrays.      
+    return 'b'
+--------------------------------------------------------------------------------
+example2--------------------------------------------------------------------------------
+####
+# Each team's file must define four tokens:
+#     team_name: a string
+#     strategy_name: a string
+#     strategy_description: a string
+#     move: A function that returns 'c' or 'b'
+####
+
+team_name = 'E2'
+strategy_name = 'Alternate'
+strategy_description = 'Collude, then alternate.'
+    
+def move(my_history, their_history, my_score, their_score):
+    '''Make my move based on the history with this player.
+    
+    history: a string with one letter (c or b) per round that has been played with this opponent.
+    their_history: a string of the same length as history, possibly empty. 
+    The first round between these two players is my_history[0] and their_history[0]
+    The most recent round is my_history[-1] and their_history[-1]
+    
+    Returns 'c' or 'b' for collude or betray.
+    '''
+    # This player colludes on even numbered rounds (first round is round #0).
+    if len(my_history)%2 == 0:
+        return 'c'
+    else:
+        return 'b'
+    --------------------------------------------------------------------------------
+team1--------------------------------------------------------------------------------
+####
+# Each team's file must define four tokens:
+#     team_name: a string
+#     strategy_name: a string
+#     strategy_description: a string
+#     move: A function that returns 'c' or 'b'
+####
+
+team_name = 'RobandReiswillRek' # Only 10 chars displayed.
+strategy_name = 'Stradegy Reader'
+strategy_description = 'the other team will do things based on our previous performance so be unpredictable in our random pattern basing off what they choose. The first 4 will be every other. Next we will read their first things to find out their algorithm and go accordingly.'
+    
+def move(my_history, their_history, my_score, their_score):
+    ''' Arguments accepted: my_history, their_history are strings.
+    my_score, their_score are ints.
+    Make my move.
+    Returns 'c' or 'b'. 
+    '''
+    a = their_history[0:4].lower()
+    if len(my_history) <= 4:
+        if len(my_history)%2 == 0:
+            return'b'
+        else:
+            return'c'
+    elif a == 'bcbc' or a == 'cbcb':
+            return'b'
+    elif a == 'bbbb' or a == 'cccc':
+        return'b'
+    elif a == 'bccb' or a == 'cbbc' or a == 'ccbb' or a == 'bbcc':
+        if their_history[-2:-1] == 'bb':
+            return'c'
+        elif their_history[-2:-1] == 'cc':
+            return'b'
+        elif their_history[-2:-1] == 'bc':
+            return'b'
+        elif their_history[-2:-1] == 'cb':
+            return'b'
+    elif a == 'bccc' or a == 'cbcc' or a == 'ccbc' or a == 'cccb':
+        if their_history[-3:-1] == 'bcc':
+            return'c'
+        elif their_history[-3:-1] == 'ccc':
+            return'b'
+        elif their_history[-3:-1] == 'cbc':
+            return'b'
+        elif their_history[-3:-1] == 'ccb':
+            return'c'
+    elif a == 'cbbb' or a == 'bcbb' or a == 'bbcb' or a == 'bbbc':
+        return'b'
+        
+    
+            
+        
+        
+    # my_history: a string with one letter (c or b) per round that has been played with this opponent.
+    # their_history: a string of the same length as history, possibly empty. 
+    # The first round between these two players is my_history[0] and their_history[0].
+    # The most recent round is my_history[-1] and their_history[-1].
+    
+    # Analyze my_history and their_history and/or my_score and their_score.
+    # Decide whether to return 'c' or 'b'.
+
+def test_move(my_history, their_history, my_score, their_score, result):
+    '''calls move(my_history, their_history, my_score, their_score)
+    from this module. Prints error if return value != result.
+    Returns True or False, dpending on whether result was as expected.
+    '''
+    real_result = move(my_history, their_history, my_score, their_score)
+    if real_result == result:
+        return True
+    else:
+        print("move(" +
+            ", ".join(["'"+my_history+"'", "'"+their_history+"'",
+                       str(my_score), str(their_score)])+
+            ") returned " + "'" + real_result + "'" +
+            " and should have returned '" + result + "'")
+        return False
+
+if __name__ == '__main__':
+     
+    # Test 1: Betray on first move.
+    if test_move(my_history='',
+              their_history='', 
+              my_score=0,
+              their_score=0,
+              result='b'):
+         print 'Test passed'
+     # Test 2: Continue betraying if they collude despite being betrayed.
+    test_move(my_history='bbb',
+              their_history='ccc', 
+              # Note the scores are for testing move().
+              # The history and scores don't need to match unless
+              # that is relevant to the test of move(). Here,
+              # the simulation (if working correctly) would have awarded 
+              # 300 to me and -750 to them. This test will pass if and only if
+              # move('bbb', 'ccc', 0, 0) returns 'b'.
+              my_score=0, 
+              their_score=0,
+              result='b')             --------------------------------------------------------------------------------
+Section 3 - Game Data for Team E0
+--------------------------------------------------------------------------------
+-500 pt/round: E0(P0) "Collude"
+100 pt/round: E1(P1) "Betray"
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
+--------------------------------------------------------------------------------
+-249 pt/round: E0(P0) "Collude"
+49 pt/round: E2(P2) "Alternate"
+CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc
+CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB
+
+CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc
+CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB
+
+CcCcCcCcCcCcCcCcC
+CBCBCBCBCBCBCBCBC
+
+--------------------------------------------------------------------------------
+-495 pt/round: E0(P0) "Collude"
+98 pt/round: RobandReiswillRek(P3) "Stradegy Reader"
+cCcCcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+BCBCBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
+ccccccccccccccc
+BBBBBBBBBBBBBBB
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Section 3 - Game Data for Team E1
+--------------------------------------------------------------------------------
+100 pt/round: E1(P1) "Betray"
+-500 pt/round: E0(P0) "Collude"
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+--------------------------------------------------------------------------------
+-75 pt/round: E1(P1) "Betray"
+-376 pt/round: E2(P2) "Alternate"
+BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
+cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
+
+BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
+cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
+
+BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbB
+cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbc
+
+--------------------------------------------------------------------------------
+-246 pt/round: E1(P1) "Betray"
+-253 pt/round: RobandReiswillRek(P3) "Stradegy Reader"
+bBbBbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bcbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+
+bbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbb
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Section 3 - Game Data for Team E2
+--------------------------------------------------------------------------------
+49 pt/round: E2(P2) "Alternate"
+-249 pt/round: E0(P0) "Collude"
+CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB
+CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc
+
+CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB
+CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc
+
+CBCBCBCBCBCBCBCBC
+CcCcCcCcCcCcCcCcC
+
+--------------------------------------------------------------------------------
+-376 pt/round: E2(P2) "Alternate"
+-75 pt/round: E1(P1) "Betray"
+cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
+BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
+
+cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
+BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
+
+cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbc
+BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbB
+
+--------------------------------------------------------------------------------
+-370 pt/round: E2(P2) "Alternate"
+-78 pt/round: RobandReiswillRek(P3) "Stradegy Reader"
+cBcBcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
+BcBcBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
+
+cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbc
+BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbB
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Section 3 - Game Data for Team RobandReiswillRek
+--------------------------------------------------------------------------------
+98 pt/round: RobandReiswillRek(P3) "Stradegy Reader"
+-495 pt/round: E0(P0) "Collude"
+BCBCBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+cCcCcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+BBBBBBBBBBBBBBB
+ccccccccccccccc
+
+--------------------------------------------------------------------------------
+-253 pt/round: RobandReiswillRek(P3) "Stradegy Reader"
+-246 pt/round: E1(P1) "Betray"
+bcbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bBbBbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+
+bbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbb
+
+--------------------------------------------------------------------------------
+-78 pt/round: RobandReiswillRek(P3) "Stradegy Reader"
+-370 pt/round: E2(P2) "Alternate"
+BcBcBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
+cBcBcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
+
+BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbB
+cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbc
+
+--------------------------------------------------------------------------------
