@@ -16,20 +16,20 @@ Section 1 - Player vs. Player
 --------------------------------------------------------------------------------
 Each column shows pts/round earned against each other player:
              P0     P1     P2     P3
-vs. P0 :      0    100     49     49
+vs. P0 :      0    100     49     44
 vs. P1 :   -500      0   -375   -250
-vs. P2 :   -248    -75      0   -136
-vs. P3 :   -249   -250   -288      0
-TOTAL  :   -997   -225   -614   -337
+vs. P2 :   -249    -75      0   -141
+vs. P3 :   -225 [;  -250   -281      0
+TOTAL  :   -974   -225   -607   -347
 --------------------------------------------------------------------------------
 Section 2 - Leaderboard
 --------------------------------------------------------------------------------
 Average points per round:
 Team name (P#):  Score      with strategy name
 E0        (P1):        -57 points with Betray                                  
-Mr. F     (P3):        -85 points with Randomness unless you backstab          
-E2        (P2):       -154 points with Alternate                               
-E0        (P0):       -250 points with Collude                                 
+Mr. F     (P3):        -87 points with Randomness unless you backstab          
+E2        (P2):       -152 points with Alternate                               
+E0        (P0):       -244 points with Collude                                 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 example0--------------------------------------------------------------------------------
@@ -127,6 +127,7 @@ teamflan------------------------------------------------------------------------
 team_name = 'Mr. F' # Only 10 chars displayed.
 strategy_name = 'Randomness unless you backstab'
 strategy_description = 'If the opponent colludes than the algorithm randomly selects c or b for the next round. If the opponent backstabs, than the algorithm will always backstab back. '
+
 import random
 
 def move(my_history, their_history, my_score, their_score):
@@ -196,29 +197,32 @@ Section 3 - Game Data for Team E0
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 
-cccccccccccccccccccccccccccccccccccc
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
+cccccccc
+BBBBBBBB
 
 --------------------------------------------------------------------------------
--248 pt/round: E0(P0) "Collude"
+-249 pt/round: E0(P0) "Collude"
 49 pt/round: E2(P2) "Alternate"
 CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc
 CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB
 
-CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcC
-CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBC
+CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc
+CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB
+
+CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcC
+CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBC
 
 --------------------------------------------------------------------------------
--249 pt/round: E0(P0) "Collude"
-49 pt/round: Mr. F(P3) "Randomness unless you backstab"
-CccCcCCCcCccCCcCCcCcCCCcCCcCCccCcCcCCCCcCcccCccCCCCCcCcCccCCcCccCcCCcccCCCcCCCCC
-CBBCBCCCBCBBCCBCCBCBCCCBCCBCCBBCBCBCCCCBCBBBCBBCCCCCBCBCBBCCBCBBCBCCBBBCCCBCCCCC
+-225 pt/round: E0(P0) "Collude"
+44 pt/round: Mr. F(P3) "Randomness unless you backstab"
+CCCCcCCCcccCcCcCCcCCcCccCccCcCCCcCCCCCCccCCccCcCCCCcCCCcCcCcCcCCcCccCCcCcCcCcccc
+CCCCBCCCBBBCBCBCCBCCBCBBCBBCBCCCBCCCCCCBBCCBBCBCCCCBCCCBCBCBCBCCBCBBCCBCBCBCBBBB
 
-cCcccCCcccCCCCcCcCCCCCCCcCccCCCccCcccCccCcccccCCcccCccccccCccCccCcCccccccCCCccCC
-BCBBBCCBBBCCCCBCBCCCCCCCBCBBCCCBBCBBBCBBCBBBBBCCBBBCBBBBBBCBBCBBCBCBBBBBBCCCBBCC
-
-CcccCccCcCCCCCccCcCcCcCcc
-CBBBCBBCBCCCCCBBCBCBCBCBB
+ccCCcCccCCccccCcCcCccccCcCCcCCcCCcCcCCccCCccCcCCCcCccCCCCC
+BBCCBCBBCCBBBBCBCBCBBBBCBCCBCCBCCBCBCCBBCCBBCBCCCBCBBCCCCC
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -229,8 +233,11 @@ Section 3 - Game Data for Team E0
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-cccccccccccccccccccccccccccccccccccc
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+BBBBBBBB
+cccccccc
 
 --------------------------------------------------------------------------------
 -75 pt/round: E0(P1) "Betray"
@@ -238,8 +245,8 @@ cccccccccccccccccccccccccccccccccccc
 BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
 cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
 
-BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
-cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
+BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
+cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
 
 --------------------------------------------------------------------------------
 -250 pt/round: E0(P1) "Betray"
@@ -247,23 +254,23 @@ cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-
-bb
-bb
+bbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbb
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 Section 3 - Game Data for Team E2
 --------------------------------------------------------------------------------
 49 pt/round: E2(P2) "Alternate"
--248 pt/round: E0(P0) "Collude"
+-249 pt/round: E0(P0) "Collude"
 CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB
 CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc
 
-CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBC
-CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcC
+CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB
+CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc
+
+CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBC
+CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcC
 
 --------------------------------------------------------------------------------
 -375 pt/round: E2(P2) "Alternate"
@@ -271,35 +278,32 @@ CcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcC
 cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
 BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
 
-cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
-BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
+cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcb
+BbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBb
 
 --------------------------------------------------------------------------------
--288 pt/round: E2(P2) "Alternate"
--136 pt/round: Mr. F(P3) "Randomness unless you backstab"
-CbcbcbcBcBcBcbcbcBcBcBcbcbcbcbcBcBcBcBcbcbcbcbcBcBcBcbcBcBcbcbcbcBcbcBcBcbcbcBcB
-CbBbBbBcBcBcBbBbBcBcBcBbBbBbBbBcBcBcBcBbBbBbBbBcBcBcBbBcBcBbBbBbBcBbBcBcBbBbBcBc
+-281 pt/round: E2(P2) "Alternate"
+-141 pt/round: Mr. F(P3) "Randomness unless you backstab"
+CBcBcBcBcBcBcBcbcbcbcBcBcbcbcbcBcbcbcbcbcBcBcBcBcBcBcBcbcbcbcBcBcbcBcbcBcBcBcBcB
+CcBcBcBcBcBcBcBbBbBbBcBcBbBbBbBcBbBbBbBbBcBcBcBcBcBcBcBbBbBbBcBcBbBcBbBcBcBcBcBc
 
-cbcbcBcBcbcbcbcBcbcbcbcBcBcBcbcbcBcBcbcbcbcBcbcBcBcbcBcbcBcbcbcbcBcBcbcbcbcBcbcB
-BbBbBcBcBbBbBbBcBbBbBbBcBcBcBbBbBcBcBbBbBbBcBbBcBcBbBcBbBcBbBbBbBcBcBbBbBbBcBbBc
+cbcbcbcbcBcBcbcbcbcBcbcBcBcBcbcBcbcbcBcbcbcBcBcBcBcBcBcbcBcBcBcbcbcBcbcbcbcbcbcb
+BbBbBbBbBcBcBbBbBbBcBbBcBcBcBbBcBbBbBcBbBbBcBcBcBcBcBcBbBcBcBcBbBbBcBbBbBbBbBbBb
 
-cBcBcbcbcBcBcB
-BcBcBbBbBcBcBc
+cBcbcbcbcbcbcBcBcbcB
+BcBbBbBbBbBbBcBcBbBc
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 Section 3 - Game Data for Team Mr. F
 --------------------------------------------------------------------------------
-49 pt/round: Mr. F(P3) "Randomness unless you backstab"
--249 pt/round: E0(P0) "Collude"
-CBBCBCCCBCBBCCBCCBCBCCCBCCBCCBBCBCBCCCCBCBBBCBBCCCCCBCBCBBCCBCBBCBCCBBBCCCBCCCCC
-CccCcCCCcCccCCcCCcCcCCCcCCcCCccCcCcCCCCcCcccCccCCCCCcCcCccCCcCccCcCCcccCCCcCCCCC
+44 pt/round: Mr. F(P3) "Randomness unless you backstab"
+-225 pt/round: E0(P0) "Collude"
+CCCCBCCCBBBCBCBCCBCCBCBBCBBCBCCCBCCCCCCBBCCBBCBCCCCBCCCBCBCBCBCCBCBBCCBCBCBCBBBB
+CCCCcCCCcccCcCcCCcCCcCccCccCcCCCcCCCCCCccCCccCcCCCCcCCCcCcCcCcCCcCccCCcCcCcCcccc
 
-BCBBBCCBBBCCCCBCBCCCCCCCBCBBCCCBBCBBBCBBCBBBBBCCBBBCBBBBBBCBBCBBCBCBBBBBBCCCBBCC
-cCcccCCcccCCCCcCcCCCCCCCcCccCCCccCcccCccCcccccCCcccCccccccCccCccCcCccccccCCCccCC
-
-CBBBCBBCBCCCCCBBCBCBCBCBB
-CcccCccCcCCCCCccCcCcCcCcc
+BBCCBCBBCCBBBBCBCBCBBBBCBCCBCCBCCBCBCCBBCCBBCBCCCBCBBCCCCC
+ccCCcCccCCccccCcCcCccccCcCCcCCcCCcCcCCccCCccCcCCCcCccCCCCC
 
 --------------------------------------------------------------------------------
 -250 pt/round: Mr. F(P3) "Randomness unless you backstab"
@@ -307,22 +311,19 @@ CcccCccCcCCCCCccCcCcCcCcc
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-
-bb
-bb
+bbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbb
 
 --------------------------------------------------------------------------------
--136 pt/round: Mr. F(P3) "Randomness unless you backstab"
--288 pt/round: E2(P2) "Alternate"
-CbBbBbBcBcBcBbBbBcBcBcBbBbBbBbBcBcBcBcBbBbBbBbBcBcBcBbBcBcBbBbBbBcBbBcBcBbBbBcBc
-CbcbcbcBcBcBcbcbcBcBcBcbcbcbcbcBcBcBcBcbcbcbcbcBcBcBcbcBcBcbcbcbcBcbcBcBcbcbcBcB
+-141 pt/round: Mr. F(P3) "Randomness unless you backstab"
+-281 pt/round: E2(P2) "Alternate"
+CcBcBcBcBcBcBcBbBbBbBcBcBbBbBbBcBbBbBbBbBcBcBcBcBcBcBcBbBbBbBcBcBbBcBbBcBcBcBcBc
+CBcBcBcBcBcBcBcbcbcbcBcBcbcbcbcBcbcbcbcbcBcBcBcBcBcBcBcbcbcbcBcBcbcBcbcBcBcBcBcB
 
-BbBbBcBcBbBbBbBcBbBbBbBcBcBcBbBbBcBcBbBbBbBcBbBcBcBbBcBbBcBbBbBbBcBcBbBbBbBcBbBc
-cbcbcBcBcbcbcbcBcbcbcbcBcBcBcbcbcBcBcbcbcbcBcbcBcBcbcBcbcBcbcbcbcBcBcbcbcbcBcbcB
+BbBbBbBbBcBcBbBbBbBcBbBcBcBcBbBcBbBbBcBbBbBcBcBcBcBcBcBbBcBcBcBbBbBcBbBbBbBbBbBb
+cbcbcbcbcBcBcbcbcbcBcbcBcBcBcbcBcbcbcBcbcbcBcBcBcBcBcBcbcBcBcBcbcbcBcbcbcbcbcbcb
 
-BcBcBbBbBcBcBc
-cBcBcbcbcBcBcB
+BcBbBbBbBbBbBcBcBbBc
+cBcbcbcbcbcbcBcBcbcB
 
 --------------------------------------------------------------------------------
