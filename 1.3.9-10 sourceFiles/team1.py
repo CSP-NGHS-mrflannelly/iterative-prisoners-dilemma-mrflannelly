@@ -16,14 +16,15 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
+    a = their_history[0:3].lower()
     if len(my_history) <= 4:
         if len(my_history)%2 == 0:
             return'b'
         else:
             return'c'
     else:
-        if their_history[0:3].lower() == 'bcbc'
-        
+        if a == 'bcbc':
+            return'b'
         
         
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
@@ -33,10 +34,7 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    
-    return 'c'
 
-    
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
     from this module. Prints error if return value != result.
