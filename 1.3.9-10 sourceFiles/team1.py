@@ -16,7 +16,7 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
-    a = their_history[0:3].lower()
+    a = their_history[0:4].lower()
     if len(my_history) <= 4:
         if len(my_history)%2 == 0:
             return'b'
@@ -27,32 +27,25 @@ def move(my_history, their_history, my_score, their_score):
     elif a == 'bbbb' or a == 'cccc':
         return'b'
     elif a == 'bccb' or a == 'cbbc' or a == 'ccbb' or a == 'bbcc':
-        if their_history[-2:-1] == 'bb':
+        if their_history[-2:] == 'bb':
             return'c'
-        elif their_history[-2:-1] == 'cc':
+        elif their_history[-2:] == 'cc':
             return'b'
-        elif their_history[-2:-1] == 'bc':
+        elif their_history[-2:] == 'bc':
             return'b'
-        elif their_history[-2:-1] == 'cb':
+        elif their_history[-2:] == 'cb':
             return'b'
     elif a == 'bccc' or a == 'cbcc' or a == 'ccbc' or a == 'cccb':
-        if their_history[-3:-1] == 'bcc':
+        if their_history[-3:] == 'bcc':
             return'c'
-        elif their_history[-3:-1] == 'ccc':
+        elif their_history[-3:] == 'ccc':
             return'b'
-        elif their_history[-3:-1] == 'cbc':
+        elif their_history[-3:] == 'cbc':
             return'b'
-        elif their_history[-3:-1] == 'ccb':
+        elif their_history[-3:] == 'ccb':
             return'c'
     elif a == 'cbbb' or a == 'bcbb' or a == 'bbcb' or a == 'bbbc':
-        if their_history[-3:-1] == 'bcc':
-            return'c'
-        elif their_history[-3:-1] == 'ccc':
-            return'b'
-        elif their_history[-3:-1] == 'cbc':
-            return'b'
-        elif their_history[-3:-1] == 'ccb':
-            return'c'
+        return'b'
         
     
             
