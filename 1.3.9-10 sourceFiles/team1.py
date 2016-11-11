@@ -22,7 +22,7 @@ def move(my_history, their_history, my_score, their_score):
         else:
             return'c'
     else:
-        if their_history.lower() == 'bcbc' 
+        if their_history[0:3].lower() == 'bcbc'
         
         
         
